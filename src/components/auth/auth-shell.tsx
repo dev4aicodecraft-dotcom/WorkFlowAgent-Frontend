@@ -21,7 +21,7 @@ export function AuthShell({
 }: AuthShellProps) {
   return (
     <div className="relative h-svh overflow-hidden grid lg:grid-cols-2">
-        <ThemeToggle/>
+        <ThemeToggle className="absolute top-4 right-4 z-20"/>
 
       {/* Left brand panel */}
       <aside className="relative hidden lg:flex min-h-0 h-full flex-col justify-between p-10 overflow-hidden">

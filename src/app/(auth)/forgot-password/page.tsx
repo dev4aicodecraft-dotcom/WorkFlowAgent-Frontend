@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="relative h-svh overflow-hidden grid lg:grid-cols-2">
-      <ThemeToggle />
+      <ThemeToggle className="absolute top-4 right-4 z-20"/>
 
       {/* LEFT background */}
       <aside className="relative hidden lg:block min-h-0 h-full p-5">

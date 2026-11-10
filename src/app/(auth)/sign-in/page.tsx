@@ -8,7 +8,7 @@ export default function SignInPage() {
       backgroundSrc="/auth/sign-in-bg.jpg"
       headline={
         <>
-        Welcome Back to {""}
+        Welcome Back to {" "}
         <span className="text-violet-500">WorkflowAgent</span>
         </>
       }

@@ -18,7 +18,7 @@ export function useSignIn() {
     mutationFn: (payload: SignInPayload) => authApi.signIn(payload),
     onSuccess: (data) => {
       setSession(data.user, data.tokens.accessToken);
-      router.push("/dashboard"); // later
+      router.push("/workflows/demo"); // later
     },
   });
 }
@@ -31,7 +31,7 @@ export function useSignUp() {
     mutationFn: (payload: SignUpPayload) => authApi.signUp(payload),
     onSuccess: (data) => {
       setSession(data.user, data.tokens.accessToken);
-      router.push("/dashboard");
+      router.push("/workflows/demo");
     },
   });
 }

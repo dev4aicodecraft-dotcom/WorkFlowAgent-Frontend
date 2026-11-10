@@ -72,7 +72,7 @@
 @layer base {
   * { @apply border-border; }
   body {
-    @apply h-full overflow-hidden bg-background text-foreground antialiased ;
+    @apply  bg-background text-foreground antialiased ;
   }
 }
 @utility glow-purple {
