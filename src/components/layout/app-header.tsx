@@ -22,7 +22,7 @@ export function AppHeader() {
       </div>
 
       <div className="flex items-center gap-3">
-      <ThemeToggle />
+      
         <div className="flex items-center gap-2 text-sm">
           <Switch defaultChecked />
           <span>Active</span>
@@ -37,6 +37,7 @@ export function AppHeader() {
         <Button variant="ghost" size="icon" className="size-8">
           <MoreHorizontal className="size-4" />
         </Button>
+        <ThemeToggle />
       </div>
     </div>
   );
