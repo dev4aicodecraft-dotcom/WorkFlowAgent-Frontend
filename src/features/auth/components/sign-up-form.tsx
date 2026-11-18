@@ -13,7 +13,13 @@ import { AuthTabs } from "@/components/auth/auth-tabs";
 
 export function SignUpForm() {
   const signUp = useSignUp();
-  const [name, setName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [firm_name, setFirmName] = useState("");
+  const [address_line_one, setAddressLineOne] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -31,7 +37,7 @@ export function SignUpForm() {
           return;
         }
 
-        signUp.mutate({ name, email, password, confirmPassword });
+        signUp.mutate({ first_name, last_name, firm_name, address_line_one, city, state, country, email, password, confirmPassword });
       }}
     >
 
@@ -60,8 +66,8 @@ export function SignUpForm() {
           type="text"
           placeholder="Full Name"
           className="h-11 pl-9 bg-background/50"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={first_name}
+          onChange={(e) => setFirstName(e.target.value)}
           required
         />
         </div>

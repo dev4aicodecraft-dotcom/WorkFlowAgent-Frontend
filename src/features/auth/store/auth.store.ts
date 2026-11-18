@@ -7,7 +7,10 @@ import type { User } from "@/features/auth/types/auth.types";
 type AuthState = {
   user: User | null;
   accessToken: string | null;
-  setSession: (user: User, accessToken: string) => void;
+  refreshToken: string | null;
+  setTokens: (accessToken: string, refreshToken?: string | null) => void;
+  setUser: (user: User | null) => void;
+  setSession: (user: User | null, accessToken: string, refreshToken?: string | null) => void;
   clearSession: () => void;
 };
 
@@ -16,8 +19,12 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: null,
       accessToken: null,
-      setSession: (user, accessToken) => set({ user, accessToken }),
-      clearSession: () => set({ user: null, accessToken: null }),
+      refreshToken: null,
+      setTokens: (accessToken, refreshToken = null) => 
+        set({ accessToken, refreshToken: refreshToken ?? null }),
+      setUser: (user) => set({user}),
+      setSession: (user, accessToken, refreshToken = null) => set({ user, accessToken, refreshToken: refreshToken ?? null}),
+      clearSession: () => set({ user: null, accessToken: null, refreshToken: null }),
     }),
     { name: "workflowagent-auth" }
   )

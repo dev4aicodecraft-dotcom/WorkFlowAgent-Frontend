@@ -1,23 +1,24 @@
 import { apiClient } from "@/lib/api-client";
-import type {
-  AuthResponse,
-  ForgotPasswordPayload,
-  MessageResponse,
-  SignInPayload,
-  SignUpPayload,
-} from "../types/auth.types";
+import type { ForgotPasswordPayload, MessageResponse } from "../types/auth.types";
+import type { ApiResponse, FirmRegistration, LoginRequest, TokenResponse, UserResponse} from "@/types/api"
 
 export const authApi = {
-  signIn: (payload: SignInPayload) =>
-    apiClient<AuthResponse>("/auth/sign-in", {
+  signIn: (payload: LoginRequest) =>
+    apiClient<ApiResponse<TokenResponse>>("/auth/login", {
+      method: "POST",
+      body: {email: payload.email, password: payload.password},
+    }),
+
+  signUp: (payload: FirmRegistration) =>
+    apiClient<ApiResponse<UserResponse>>("/auth/register-firm", {
       method: "POST",
       body: payload,
     }),
 
-  signUp: (payload: SignUpPayload) =>
-    apiClient<AuthResponse>("/auth/sign-up", {
-      method: "POST",
-      body: payload,
+  me: (token: string) => 
+    apiClient<ApiResponse<UserResponse>>("/users/me",{
+      method: "GET",
+      token,
     }),
 
   forgotPassword: (payload: ForgotPasswordPayload) =>
