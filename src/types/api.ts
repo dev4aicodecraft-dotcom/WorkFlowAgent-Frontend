@@ -31,7 +31,7 @@ export type UserResponse = {
     email: string;
     first_name: string;
     last_name: string;
-    role: "admin" | "user";
+    role: "super_admin" |"admin" | "user";
 };
 
 /** POST /auth/register-firm body */
@@ -118,4 +118,61 @@ export type ConversationMessageResponse = {
     conversation_id: string;
     essages: ChatMessage[]; // OpenAPI typo; keep as-is unless backend fixes it
     created_at: string;
+};
+
+export type UserRole = "super_admin" | "admin" | "user";
+
+export type InviteCreate = { email: string };
+
+export type InviteCreated = {
+  id: string;
+  email: string;
+  expires_at: string;
+  created_at: string;
+  invite_url: string;
+};
+
+export type InviteResponse = {
+  id: string;
+  email: string;
+  expires_at: string;
+  created_at: string;
+};
+
+export type InviteLookupResponse = {
+  email: string;
+  firm_name: string;
+  expires_at: string;
+};
+
+export type InviteAcceptance = {
+  token: string;
+  first_name: string;
+  last_name: string;
+  address_line_one: string;
+  address_line_two?: string | null;
+  city: string;
+  state: string;
+  country: string;
+  phone_number?: string | null;
+  password: string;
+};
+
+export type MemberResponse = {
+  id: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  role: UserRole;
+  created_at: string;
+};
+
+export type FirmResponse = {
+  id: string;
+  name: string;
+  legal_name?: string | null;
+  website?: string | null;
+  contact_email?: string | null;
+  phone_number?: string | null;
+  created_at?: string;
 };

@@ -1,6 +1,6 @@
 import { apiClient } from "@/lib/api-client";
 import type { ForgotPasswordPayload, MessageResponse } from "../types/auth.types";
-import type { ApiResponse, FirmRegistration, LoginRequest, TokenResponse, UserResponse} from "@/types/api"
+import type { ApiResponse, FirmRegistration, LoginRequest, TokenResponse, UserResponse, InviteAcceptance, InviteLookupResponse} from "@/types/api"
 
 export const authApi = {
   signIn: (payload: LoginRequest) =>
@@ -32,4 +32,17 @@ export const authApi = {
       method: "POST",
       body: { email },
     }),
+
+  lookupInvite: (token: string) => 
+    apiClient<ApiResponse<InviteLookupResponse>>("/auth/invites/lookup", {
+      method: "POST",
+      body: { token },
+    }),
+
+  acceptInvite: (payload: InviteAcceptance) => 
+    apiClient<ApiResponse<UserResponse>>("/auth/invites/accept", {
+      method: "POST",
+      body: payload,
+    }),
+
 };

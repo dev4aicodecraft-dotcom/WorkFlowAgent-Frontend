@@ -11,6 +11,7 @@ import type {
   SignUpFormValues,
 } from "../types/auth.types";
 import type { FirmRegistration } from "@/types/api";
+import { roleHome } from "@/lib/roles";
 
 export function useSignIn() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export function useSignIn() {
       }
 
       setSession(user, tokens.access_token, tokens.refresh_token);
-      router.push("/workflows/demo"); // later
+      router.push(roleHome(user?.role)); // later
     },
   });
 }

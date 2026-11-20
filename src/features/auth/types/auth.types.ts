@@ -6,7 +6,7 @@ export type User = {
   name: string;
   email: string;
   firmId?: string;
-  role?: "admin" | "user";
+  role?: "super_admin" | "admin" | "user";
 };
 
 export function mapUserResponse(u: UserResponse): User {
